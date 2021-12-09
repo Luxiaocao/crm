@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+  <properties resource="jdbc.properties"/>
+  <!--为mapper映射文件中的domain起别名-->
+  <typeAliases>
+    <!--批量为某个包下的domain起别名(由MyBatis默认起好)，别名为类名-->
+  	<package name="com.zbw.crm.settings.domain"/>
+
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+      <!--批量注册mapper映射文件, name属性：表示该包下所有的mapper映射文件自动注册-->
+      <package name="com.zbw.crm.settings.dao"/>
+    
+  </mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
