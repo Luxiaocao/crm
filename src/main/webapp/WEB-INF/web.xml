@@ -4,6 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
   <filter>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>com.zbw.crm.web.filter.EncodingFilter</filter-class>
@@ -21,6 +22,11 @@
     <url-pattern>*.do</url-pattern>
     <url-pattern>*.jsp</url-pattern>
   </filter-mapping>
+  
+  <listener>
+    <listener-class>com.zbw.crm.web.listener.SysInitLstener</listener-class>
+  </listener>
+
   <servlet>
     <servlet-name>UserController</servlet-name>
     <servlet-class>com.zbw.crm.settings.web.controller.UserController</servlet-class>
@@ -28,9 +34,27 @@
   <servlet-mapping>
     <servlet-name>UserController</servlet-name>
     <url-pattern>/settings/user/login.do</url-pattern>
-
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ActivityController</servlet-name>
+    <servlet-class>com.zbw.crm.workbench.web.controller.ActivityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActivityController</servlet-name>
+    <url-pattern>/workbench/activity/getUserList.do</url-pattern>
+    <url-pattern>/workbench/activity/save.do</url-pattern>
+    <url-pattern>/workbench/activity/pageList.do</url-pattern>
+    <url-pattern>/workbench/activity/delete.do</url-pattern>
+    <url-pattern>/workbench/activity/getActivityAndUserList.do</url-pattern>
+    <url-pattern>/workbench/activity/update.do</url-pattern>
+    <url-pattern>/workbench/activity/detail.do</url-pattern>
+    <url-pattern>/workbench/activity/getRemarkListByAid.do</url-pattern>
+    <url-pattern>/workbench/activity/deleteRemark.do</url-pattern>
+    <url-pattern>/workbench/activity/saveRemark.do</url-pattern>
+    <url-pattern>/workbench/activity/getRemarkById.do</url-pattern>
+    <url-pattern>/workbench/activity/updateRemark.do</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>

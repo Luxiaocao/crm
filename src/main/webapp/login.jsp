@@ -14,6 +14,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </head>
 <script>
 	$(function(){
+		if(window.top != window){
+			window.top.location = window.location;
+		}
 		$("#act").val("");
 		$("#act").focus();
 

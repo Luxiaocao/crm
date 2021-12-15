@@ -8,6 +8,7 @@ import com.zbw.crm.utils.DateTimeUtil;
 import com.zbw.crm.utils.SqlSessionUtil;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserServiceImpl implements UserService {
@@ -34,5 +35,10 @@ public class UserServiceImpl implements UserService {
             throw new LoginException("账号已锁定");
         }
         return user;
+    }
+
+    public List<User> getUserList() {
+        List<User> list = userDao.getUserList();
+        return list;
     }
 }

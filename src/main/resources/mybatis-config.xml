@@ -9,6 +9,7 @@
   <typeAliases>
     <!--批量为某个包下的domain起别名(由MyBatis默认起好)，别名为类名-->
   	<package name="com.zbw.crm.settings.domain"/>
+  	<package name="com.zbw.crm.workbench.domain"/>
 
   </typeAliases>
   
@@ -27,7 +28,7 @@
   <mappers>
       <!--批量注册mapper映射文件, name属性：表示该包下所有的mapper映射文件自动注册-->
       <package name="com.zbw.crm.settings.dao"/>
-    
+      <package name="com.zbw.crm.workbench.dao"/>
   </mappers>
 </configuration>
 
