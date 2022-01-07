@@ -72,6 +72,24 @@
     <url-pattern>/workbench/clue/getActivityByName.do</url-pattern>
     <url-pattern>/workbench/clue/bund.do</url-pattern>
     <url-pattern>/workbench/clue/convert.do</url-pattern>
+
+  </servlet-mapping>
+
+  <!--交易控制器-->
+  <servlet>
+    <servlet-name>TranController</servlet-name>
+    <servlet-class>com.zbw.crm.workbench.web.controller.TranController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TranController</servlet-name>
+    <url-pattern>/workbench/transaction/add.do</url-pattern>
+    <url-pattern>/workbench/transaction/getCustomerName.do</url-pattern>
+    <url-pattern>/workbench/transaction/save.do</url-pattern>
+    <url-pattern>/workbench/transaction/pageList.do</url-pattern>
+    <url-pattern>/workbench/transaction/detail.do</url-pattern>
+    <url-pattern>/workbench/transaction/showHistoryList.do</url-pattern>
+    <url-pattern>/workbench/transaction/changeStage.do</url-pattern>
+    <url-pattern>/workbench/transaction/getCharts.do</url-pattern>
   </servlet-mapping>
 
 </web-app>

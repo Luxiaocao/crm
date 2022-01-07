@@ -42,7 +42,9 @@
             #{birth}
         )
     </insert>
-  	
+  	<select id="getContactsList" resultType="Contacts">
+        select * from tbl_contacts
+    </select>
 </mapper>
 
 

@@ -43,7 +43,139 @@
               #{nextContactTime}
               )
     </insert>
-  	
+  	<select id="getTranListByCondition" resultType="Tran">
+        select
+            t.id,u.name as owner,t.source,t.type,t.stage,t.name,co.fullname as contactsId,cu.name as customerId
+        from
+            tbl_tran t
+        join
+            tbl_user u
+        on
+            u.id=t.owner
+        join
+            tbl_contacts co
+        on
+            t.contactsId = co.id
+        join
+            tbl_customer cu
+        on
+            t.customerId = cu.id
+        <where>
+            <if test="owner!=null and owner!=''">
+                u.name like '%' #{owner} '%'
+            </if>
+            <if test="name!=null and name!=''">
+                and t.name like '%' #{name} '%'
+            </if>
+            <if test="customerId!=null and customerId!=''">
+                and cu.name like '%' #{customerId} '%'
+            </if>
+            <if test="contactsId!=null and contactsId!=''">
+                and co.fullname like '%' #{contactsId} '%'
+            </if>
+            <if test="type!=null and type!=''">
+                and t.type = #{type}
+            </if>
+            <if test="source!=null and source!=''">
+                and t.source = #{source}
+            </if>
+            <if test="stage!=null and stage!=''">
+                and t.stage =#{stage}
+            </if>
+        </where>
+        order by t.createTime desc
+        limit #{skipCount},#{pageSize}
+    </select>
+    <select id="getTotalByCondition" resultType="int">
+        select
+            count(*)
+        from
+        tbl_tran t
+        join
+        tbl_user u
+        on
+        u.id=t.owner
+        join
+        tbl_contacts co
+        on
+        t.contactsId = co.id
+        join
+        tbl_customer cu
+        on
+        t.customerId = cu.id
+        <where>
+            <if test="owner!=null and owner!=''">
+                u.name like '%' #{owner} '%'
+            </if>
+            <if test="name!=null and name!=''">
+                and t.name like '%' #{name} '%'
+            </if>
+            <if test="customerId!=null and customerId!=''">
+                and cu.name like '%' #{customerId} '%'
+            </if>
+            <if test="contactsId!=null and contactsId!=''">
+                and co.fullname like '%' #{contactsId} '%'
+            </if>
+            <if test="type!=null and type!=''">
+                and t.type = #{type}
+            </if>
+            <if test="source!=null and source!=''">
+                and t.source = #{source}
+            </if>
+            <if test="stage!=null and stage!=''">
+                and t.stage =#{stage}
+            </if>
+        </where>
+    </select>
+    <select id="getById" resultType="Tran">
+        select
+            t.id,
+            u.name as owner,
+            t.money,
+            t.name,
+            t.expectedDate,
+            cu.name as customerId,
+            t.stage,
+            t.type,
+            t.source,
+            a.name as activityId,
+            co.fullname as contactsId,
+            t.createBy,
+            t.createTime,
+            t.editBy,
+            t.editTime,
+            t.description,
+            t.contactSummary,
+            t.nextContactTime
+        from
+            tbl_tran t
+        join
+            tbl_user u
+        on
+            u.id=t.owner
+        left join
+            tbl_contacts co
+        on
+            t.contactsId = co.id
+        join
+            tbl_customer cu
+        on
+            t.customerId = cu.id
+        left join
+            tbl_activity a
+        on
+            t.activityId = a.id
+        where t.id = #{id}
+    </select>
+    <update id="changeStage" parameterType="Tran">
+        update tbl_tran set stage=#{stage},editBy=#{editBy},editTime=#{editTime} where id=#{id}
+    </update>
+    <select id="getTotal" resultType="int">
+        select count(*) from tbl_tran
+    </select>
+    <select id="getCharts" resultType="Map">
+        select count(*) as value,stage as name from tbl_tran group by stage
+    </select>
 </mapper>
 
 

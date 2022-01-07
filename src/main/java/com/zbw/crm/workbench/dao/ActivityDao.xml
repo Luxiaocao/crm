@@ -102,4 +102,7 @@
         where id = #{id}
 
     </update>
+    <select id="getActivityList" resultType="Activity">
+        select * from tbl_activity
+    </select>
 </mapper>

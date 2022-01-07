@@ -25,7 +25,9 @@
             #{tranId}
               )
     </insert>
-  	
+  	<select id="getTranHistoryList" resultType="TranHistory">
+        select * from tbl_tran_history where tranId = #{id} order by createTime desc
+    </select>
 </mapper>
 
 

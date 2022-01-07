@@ -118,4 +118,10 @@ public class ActivityServiceImpl implements ActivityService {
         }
         return flag;
     }
+
+    @Override
+    public List<Activity> getActivityList() {
+        List<Activity> list = activityDao.getActivityList();
+        return list;
+    }
 }
